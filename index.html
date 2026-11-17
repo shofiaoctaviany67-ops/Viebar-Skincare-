@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMIERE - Skincare Glowing & Sehat</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#FFFBF8;color:#2d2d2d}
+h1,h2{font-family:'Playfair Display',serif}
+header{position:sticky;top:0;z-index:99;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:16px 5%;box-shadow:0 2px 20px rgba(0,0,0,.05)}
+.logo{font-size:26px;font-weight:700;letter-spacing:2px}.logo span{color:#C98A7D}
+nav a{text-decoration:none;color:#333;margin:0 12px;font-size:14px;font-weight:500}
+.btn-pink{background:#C98A7D;color:#fff;padding:10px 20px;border-radius:30px;text-decoration:none;font-weight:600;font-size:14px}
+.hero{display:flex;flex-wrap:wrap;align-items:center;gap:30px;padding:50px 5%;background:linear-gradient(135deg,#FDECEA,#FFF7F0)}
+.hero-left{flex:1;min-width:300px}
+.hero-left .tag{background:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;color:#C98A7D;display:inline-block}
+.hero-left h1{font-size:48px;line-height:1.1;margin:15px 0}
+.hero-left h1 i{color:#C98A7D}
+.hero-left p{color:#777;line-height:1.7;margin-bottom:20px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-black{background:#111;color:#fff;padding:14px 28px;border:none;border-radius:30px;cursor:pointer;font-weight:600}
+.btn-white{background:#fff;border:1px solid #ddd;padding:14px 28px;border-radius:30px;cursor:pointer;font-weight:600}
+.hero-right{flex:1;min-width:300px;text-align:center}
+.hero-right img{width:100%;max-width:460px;border-radius:30px;object-fit:cover;height:420px}
+.hero-stats{display:flex;gap:30px;margin-top:25px}
+.hero-stats b{font-size:20px;display:block}
+.hero-stats span{font-size:13px;color:#888}
+.marquee{background:#111;color:#fff;text-align:center;padding:10px;font-size:13px;letter-spacing:1px}
+.section{padding:50px 5%}
+.section h2{text-align:center;font-size:32px}
+.section .sub{text-align:center;color:#999;margin:8px 0 25px}
+.filter{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:25px}
+.filter button{padding:10px 20px;border-radius:25px;border:1px solid #EAD9D5;background:#fff;cursor:pointer}
+.filter button.active{background:#C98A7D;color:#fff;border-color:#C98A7D}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.card{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.06);transition:.3s}
+.card:hover{transform:translateY(-5px)}
+.card img{width:100%;height:250px;object-fit:cover}
+.card-body{padding:18px}
+.card-body h3{font-size:17px;margin:5px 0}
+.card-body p{font-size:13px;color:#888;line-height:1.5;min-height:40px}
+.price{font-size:18px;font-weight:700;margin:10px 0}
+.price s{font-size:13px;color:#aaa;font-weight:400}
+.price small{font-size:12px;background:#FFE8E3;color:#C98A7D;padding:3px 8px;border-radius:10px;margin-left:5px}
+.btn-add{width:100%;padding:12px;border:none;background:#111;color:#fff;border-radius:12px;cursor:pointer;font-weight:600}
+.benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.benefits div{background:#fff;padding:22px;border-radius:18px;text-align:center}
+.benefits h3{margin:8px 0;font-size:16px}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px}
+.testi{background:#fff;padding:22px;border-radius:18px}
+.testi p{font-size:14px;line-height:1.6;color:#555}
+.testi b{display:block;margin-top:12px}
+.faq{max-width:700px;margin:auto}
+.faq details{background:#fff;padding:16px 20px;border-radius:14px;margin-bottom:10px;cursor:pointer}
+.cart-btn{position:fixed;bottom:20px;right:20px;background:#111;color:#fff;padding:15px 22px;border-radius:30px;cursor:pointer;z-index:100;box-shadow:0 10px 25px rgba(0,0,0,.2)}
+.drawer{position:fixed;top:0;right:-400px;width:360px;max-width:90%;height:100%;background:#fff;z-index:200;box-shadow:-10px 0 30px rgba(0,0,0,.1);transition:.3s;padding:20px;overflow:auto}
+.drawer.open{right:0}
+.drawer h3{margin-bottom:15px}
+.cart-item{display:flex;gap:10px;margin-bottom:12px;border-bottom:1px solid #eee;padding-bottom:12px}
+.cart-item img{width:60px;height:60px;border-radius:10px;object-fit:cover}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:150}
+.overlay.show{display:block}
+footer{background:#1A1A1A;color:#fff;padding:40px 5%;text-align:center}
+footer a{color:#F5C6BE;text-decoration:none}
+@media(max-width:600px){.hero-left h1{font-size:36px}}
+</style>
+</head>
+<body>
+
+<div class="marquee">✨ GRATIS ONGKIR MIN. BELANJA 100RB • COD SELURUH INDONESIA • BPOM & HALAL ✨</div>
+
+<header>
+  <div class="logo">LUMI<span>ERE.</span></div>
+  <nav><a href="#">Home</a><a href="#produk">Produk</a><a href="#testi">Testimoni</a><a href="#faq">FAQ</a></nav>
+  <a class="btn-pink" href="https://wa.me/6281234567890" target="_blank">Konsultasi Gratis</a>
+</header>
+
+<section class="hero">
+  <div class="hero-left">
+    <span class="tag">🌿 100% AMAN • BPOM • HALAL</span>
+    <h1>Kulit Sehat,<br><i>Glowing</i> Alami<br>Tanpa Ribet.</h1>
+    <p>Skincare yang dirancang untuk kulit Indonesia. Lembut untuk kulit sensitif, ampuh untuk jerawat, kusam, dan flek hitam. Hasil nyata dalam 14 hari.</p>
+    <div class="hero-btns">
+      <button class="btn-black" onclick="document.getElementById('produk').scrollIntoView({behavior:'smooth'})">Belanja Sekarang →</button>
+      <button class="btn-white" onclick="document.getElementById('testi').scrollIntoView({behavior:'smooth'})">Lihat Testimoni</button>
+    </div>
+    <div class="hero-stats">
+      <div><b>12.400+</b><span>Pelanggan Puas</span></div>
+      <div><b>4.9 / 5</b><span>Rating Toko</span></div>
+      <div><b>100%</b><span>Original</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800" alt="Skincare Lumiere">
+  </div>
+</section>
+
+<section class="section" id="produk">
+  <h2>Koleksi Best Seller</h2>
+  <p class="sub">Pilih sesuai masalah kulit kamu</p>
+  <div class="filter" id="filterBtn">
+    <button class="active" onclick="setFilter('all',this)">Semua</button>
+    <button onclick="setFilter('serum',this)">Serum</button>
+    <button onclick="setFilter('wash',this)">Facial Wash</button>
+    <button onclick="setFilter('cream',this)">Cream & Sunscreen</button>
+    <button onclick="setFilter('paket',this)">Paket Hemat</button>
+  </div>
+  <div class="grid" id="productGrid"></div>
+</section>
+
+<section class="section" style="background:#FDECEA">
+  <h2>Kenapa Harus LUMIERE?</h2>
+  <p class="sub">Bukan sekedar skincare, tapi investasi kulit sehat</p>
+  <div class="benefits">
+    <div><div style="font-size:30px">🌿</div><h3>Tanpa Merkuri</h3><p>Aman untuk bumil, busui & remaja 13+</p></div>
+    <div><div style="font-size:30px">✅</div><h3>BPOM Resmi</h3><p>Semua produk terdaftar, bisa cek di BPOM</p></div>
+    <div><div style="font-size:30px">🚚</div><h3>Kirim Cepat</h3><p>Order sebelum jam 15.00, kirim hari yang sama</p></div>
+    <div><div style="font-size:30px">💬</div><h3>Dokter Kulit Gratis</h3><p>Chat admin untuk rekomendasi sesuai tipe kulitmu</p></div>
+  </div>
+</section>
+
+<section class="section" id="testi">
+  <h2>Kata Mereka Setelah Pakai LUMIERE</h2>
+  <p class="sub">Real testi dari pelanggan kami</p>
+  <div class="testi-grid">
+    <div class="testi"><p>"Jerawatku yang udah 2 tahun gak sembuh-sembuh, kering dalam seminggu pake Acne Serum. Sekarang tinggal bekasnya aja, dikit lagi hilang."</p><b>— Nadia, Jakarta ⭐⭐⭐⭐⭐</b><span style="font-size:12px;color:#888">Paket Acne</span></div>
+    <div class="testi"><p>"Aku tipe kulit super sensitif, biasanya gampang merah. Tapi facial wash Lumiere ini lembut banget, gak ketarik sama sekali."</p><b>— Putri, Surabaya ⭐⭐⭐⭐⭐</b><span style="font-size:12px;color:#888">Gentle Facial Wash</span></div>
+    <div class="testi"><p>"Baru 2 minggu, temen kantor pada nanya pake apa kok mukaku glowing. Padahal cuma rutin serum + sunscreen doang."</p><b>— Sari, Bandung ⭐⭐⭐⭐⭐</b><span style="font-size:12px;color:#888">Brightening Serum</span></div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <h2>Tanya Jawab</h2>
+  <div class="faq">
+    <details><summary><b>Apakah aman untuk kulit sensitif?</b></summary><p style="margin-top:10px;color:#666">Ya, semua formula kami pH balanced, tanpa alkohol & parfum berlebih, dan sudah uji dermatologi.</p></details>
+    <details><summary><b>Berapa lama hasil terlihat?</b></summary><p style="margin-top:10px;color:#666">Rata-rata 7-14 hari untuk kulit lebih cerah & lembab. Untuk bekas jerawat / flek butuh 4-8 minggu pemakaian rutin.</p></details>
+    <details><summary><b>Apakah bisa COD?</b></summary><p style="margin-top:10px;color:#666">Bisa! Kami melayani COD via Shopee, TikTok Shop, dan WA untuk area Jabodetabek & Surabaya.</p></details>
+    <details><summary><b>Bagaimana cara order?</b></summary><p style="margin-top:10px;color:#666">Klik "Tambah Keranjang" lalu klik tombol keranjang di pojok kanan bawah, checkout langsung ke WhatsApp admin.</p></details>
+  </div>
+</section>
+
+<footer>
+  <h2 style="color:#fff">LUMIERE.</h2>
+  <p style="margin:10px 0;color:#aaa">Skincare lokal, kualitas internasional.</p>
+  <p>Instagram: <a href="#">@lumiere.id</a> • TikTok: <a href="#">@lumiere.id</a> • WA: 0812-3456-7890</p>
+  <p style="margin-top:15px;font-size:12px;opacity:.5">© 2026 LUMIERE Skincare. All Rights Reserved.</p>
+</footer>
+
+<div class="cart-btn" onclick="openCart()">🛒 Keranjang (<span id="cartCount">0</span>)</div>
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div class="drawer" id="drawer">
+  <h3>Keranjang Belanja 🛒 <span style="float:right;cursor:pointer" onclick="closeCart()">✕</span></h3>
+  <div id="cartList"><p style="color:#999">Keranjang masih kosong. Yuk pilih skincare kamu!</p></div>
+  <hr style="margin:15px 0">
+  <p><b>Total: <span id="cartTotal">Rp 0</span></b></p>
+  <p style="font-size:12px;color:#888;margin:5px 0">Gratis ongkir min. belanja Rp 100.000</p>
+  <button class="btn-black" style="width:100%;margin-top:10px" onclick="checkoutWA()">Checkout via WhatsApp →</button>
+  <button style="width:100%;margin-top:10px;padding:12px;border-radius:12px;border:1px solid #ddd;background:#fff;cursor:pointer" onclick="clearCart()">Kosongkan Keranjang</button>
+</div>
+
+<script>
+const products=[
+{id:1,nama:"Brightening Glow Serum",kat:"serum",harga:129000,diskon:189000,img:"https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600",desc:"Niacinamide 10% + Vit C. Cerahkan, samarkan noda hitam & bekas jerawat.",tag:"BEST SELLER"},
+{id:2,nama:"Acne Calming Serum",kat:"serum",harga:119000,diskon:149000,img:"https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=600",desc:"Salicylic Acid + Centella. Keringkan jerawat & redakan kemerahan.",tag:"UNTUK JERAWAT"},
+{id:3,nama:"Gentle Facial Wash 100ml",kat:"wash",harga:59000,diskon:79000,img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600",desc:"pH 5.5, busa lembut, tidak bikin kulit ketarik. Untuk semua tipe kulit.",tag:""},
+{id:4,nama:"Hydra Moisturizer Gel",kat:"cream",harga:89000,diskon:110000,img:"https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600",desc:"Hyaluronic 7x. Lembab 24 jam, ringan, tidak lengket.",tag:"NEW"},
+{id:5,nama:"Sunscreen SPF 50 PA+++",kat:"cream",harga:95000,diskon:120000,img:"https://images.unsplash.com/photo-1556229010-6c3f2c9ca1f8?w=600",desc:"Ringan, no whitecast, tidak berminyak. Wajib pakai tiap hari.",tag:""},
+{id:6,nama:"Paket Glowing Lengkap (4pcs)",kat:"paket",harga:299000,diskon:450000,img:"https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=600",desc:"Facial Wash + Serum + Moisturizer + Sunscreen. Hemat 150rb!",tag:"HEMAT 150RB"},
+];
+let cart=[];
+function render(filter='all'){
+  const grid=document.getElementById('productGrid');
+  grid.innerHTML='';
+  products.filter(p=>filter==='all'||p.kat===filter).forEach(p=>{
+    grid.innerHTML+=`<div class="card"><div style="position:relative"><img src="${p.img}">${p.tag?`<span style="position:absolute;top:10px;left:10px;background:#C98A7D;color:#fff;font-size:11px;padding:5px 10px;border-radius:20px">${p.tag}</span>`:''}</div><div class="card-body"><div style="color:#FFC107;font-size:13px">⭐⭐⭐⭐⭐ (1.2k)</div><h3>${p.nama}</h3><p>${p.desc}</p><div class="price">Rp ${p.harga.toLocaleString('id-ID')} <s>Rp ${p.diskon.toLocaleString('id-ID')}</s> <small>-${Math.round((1-p.harga/p.diskon)*100)}%</small></div><button class="btn-add" onclick="addToCart(${p.id})">+ Tambah Keranjang</button></div></div>`;
+  });
+}
+function setFilter(f,btn){
+  document.querySelectorAll('#filterBtn button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); render(f);
+}
+function addToCart(id){
+  const p=products.find(x=>x.id===id);
+  cart.push(p); updateCart();
+  alert(p.nama+' ditambahkan!');
+}
+function updateCart(){
+  document.getElementById('cartCount').innerText=cart.length;
+  const list=document.getElementById('cartList');
+  if(cart.length===0){list.innerHTML='<p style="color:#999">Keranjang masih kosong.</p>'}
+  else{list.innerHTML=cart.map((item,i)=>`<div class="cart-item"><img src="${item.img}"><div style="flex:1"><b style="font-size:14px">${item.nama}</b><br><span>Rp ${item.harga.toLocaleString('id-ID')}</span></div><span style="cursor:pointer" onclick="removeItem(${i})">🗑️</span></div>`).join('')}
+  let total=cart.reduce((a,b)=>a+b.harga,0);
+  document.getElementById('cartTotal').innerText='Rp '+total.toLocaleString('id-ID');
+}
+function removeItem(i){cart.splice(i,1);updateCart()}
+function clearCart(){cart=[];updateCart()}
+function openCart(){document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('show')}
+function closeCart(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('show')}
+function checkoutWA(){
+  if(cart.length===0){alert('Keranjang kosong');return}
+  let pesan='Halo LUMIERE, saya mau order:%0A';
+  let total=0;
+  cart.forEach(i=>{pesan+=`- ${i.nama} - Rp ${i.harga.toLocaleString('id-ID')}%0A`;total+=i.harga});
+  pesan+=`Total: Rp ${total.toLocaleString('id-ID')}%0A%0ANama:%0AAlamat:%0A`;
+  window.open('https://wa.me/6281234567890?text='+pesan,'_blank');
+}
+render();
+</script>
+</body>
+</html>
